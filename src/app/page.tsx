@@ -1,8 +1,13 @@
+import { HeroSection } from '@/components/sections/HeroSection';
+import { AboutSection } from '@/components/sections/AboutSection';
+import { PortfolioSection } from '@/components/sections/PortfolioSection';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold">Company Profile</h1>
-      <p className="mt-4 text-xl">Coming Soon</p>
+    <main className="flex min-h-screen flex-col">
+      <HeroSection />
+      <AboutSection />
+      <PortfolioSection />
     </main>
   );
 }
