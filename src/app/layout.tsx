@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Company Profile",
-  description: "Company Profile Website",
+  metadataBase: new URL('https://exova.id'),
+  title: "Exova Technology — Enterprise Digital Solutions",
+  description: "Perusahaan teknologi enterprise terdepan dalam transformasi digital, arsitektur cloud, dan rekayasa perangkat lunak berskala global.",
 };
 
 import { Navbar } from "@/components/layout/Navbar";

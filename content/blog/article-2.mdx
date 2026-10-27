@@ -1,0 +1,36 @@
+---
+title: "Strategi Migrasi Cloud-Native dan Zero-Downtime Deployment"
+slug: "strategi-migrasi-cloud-native-enterprise"
+excerpt: "Panduan praktis bagi organisasi enterprise dalam memigrasikan infrastruktur on-premise ke multi-cloud dengan teknik deployment tanpa downtime."
+date: "2026-10-18"
+category: "DevOps & Cloud"
+authorName: "Alexander Pratama"
+authorRole: "Chief Executive Officer"
+authorAvatar: "/images/team-alexander.jpg"
+coverImage: "/images/project-logistics.jpg"
+readTime: "5 menit baca"
+---
+
+Migrasi infrastruktur komputasi enterprise dari pusat data fisik (*on-premise*) menuju lingkungan *cloud-native* sering kali dihadapkan pada kekhawatiran terbesar para pemangku kepentingan: risiko gangguan operasional dan *downtime* layanan pelanggan.
+
+## Fondasi Infrastruktur Berbasis Kontainer
+
+Sebelum melakukan migrasi data dan aplikasi, standarisasi lingkungan kerja menggunakan Kubernetes dan *Infrastructure as Code* (Terraform / OpenTofu) menjadi keharusan mutlak.
+
+Langkah-langkah strategis yang kami terapkan:
+
+- **Immutability Lingkungan**: Tidak ada lagi konfigurasi server manual; setiap konfigurasi tercatat rapi dalam *version control* (GitOps).
+- **Service Mesh & Traffic Shaping**: Memanfaatkan Istio untuk mengontrol persentase perutean lalu lintas jaringan secara presisi.
+- **Automated Health Checks**: Mekanisme kesiapan (*readiness probe*) dan liveness pod yang memastikan lalu lintas hanya dialihkan ke kontainer yang sepenuhnya sehat.
+
+## Penerapan Blue-Green dan Canary Deployment
+
+Untuk mencapai ketiadaan *downtime* (*zero-downtime*), Exova secara konsisten mengadopsi teknik penyebaran bertahap:
+
+> "Teknik Canary Deployment memungkinkan kami menguji rilis versi baru hanya pada 2% pengguna awal, mendeteksi regresi performa sebelum berdampak ke seluruh basis pengguna."
+
+Dengan mengombinasikan *database schema migration* yang bersifat *backward-compatible* (expand and contract pattern), aplikasi lama dan aplikasi baru dapat berjalan berdampingan tanpa konflik skema data.
+
+## Hasil dan Dampak Operasional
+
+Melalui pendekatan ini, frekuensi rilis fitur meningkat dari hitungan bulan menjadi beberapa kali dalam satu minggu, sementara waktu pemulihan insiden (*MTTR*) menurun drastis hingga di bawah 15 menit.

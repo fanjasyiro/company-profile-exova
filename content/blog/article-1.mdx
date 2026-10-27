@@ -1,0 +1,37 @@
+---
+title: "Membangun Arsitektur Microservices & Event-Driven pada Sistem Finansial"
+slug: "arsitektur-microservices-event-driven"
+excerpt: "Eksplorasi mendalam mengenai strategi pemisahan monolithic legacy menjadi event-driven microservices dengan jaminan konsistensi data dan latensi rendah."
+date: "2026-10-15"
+category: "Cloud Architecture"
+authorName: "Sarah Jenkins, M.Sc."
+authorRole: "Chief Technology Officer"
+authorAvatar: "/images/team-sarah.jpg"
+coverImage: "/images/project-banking.jpg"
+readTime: "7 menit baca"
+---
+
+Dalam lanskap perbankan dan teknologi finansial modern, tuntutan skalabilitas serta ketersediaan sistem (*high availability*) menjadi tolok ukur utama keberhasilan operasional. Arsitektur monolitik yang sebelumnya mendominasi kini sering kali menjadi beban ketika volume transaksi harian melonjak puluhan kali lipat.
+
+## Mengapa Pendekatan Event-Driven?
+
+Pendekatan *Event-Driven Architecture* (EDA) memungkinkan berbagai layanan terdistribusi berkomunikasi secara asinkron melalui perantara pesan (*message broker*) berkecepatan tinggi seperti Apache Kafka atau AWS Kinesis. 
+
+Beberapa keunggulan utama dari pendekatan ini meliputi:
+
+- **Decoupling Antar Domain**: Setiap layanan berfokus hanya pada domain fungsinya tanpa perlu menunggu respon langsung (*blocking I/O*) dari layanan downstream.
+- **Toleransi Kesalahan Tinggi**: Jika satu layanan mengalami kendala sementara, pesan transaksi tetap aman tersimpan dalam antrean dan dapat diproses kembali (*replayable*).
+- **Skalabilitas Independen**: Layanan autentikasi atau penghitungan suku bunga dapat diskalakan secara independen sesuai beban transaksi aktual.
+
+## Pola Desain Kunci: Saga Pattern & Outbox Pattern
+
+Salah satu tantangan terbesar saat bermigrasi ke microservices adalah menjaga konsistensi data lintas database tanpa transaksi ACID global (*two-phase commit*). Di Exova, kami mengimplementasikan dua pola utama:
+
+> "Konsistensi data terdistribusi bukan tentang mengunci seluruh tabel database, melainkan merancang kompensasi yang deterministik saat terjadi kegagalan jaringan."
+
+1. **Transactional Outbox Pattern**: Memastikan bahwa perubahan database lokal dan penerbitan event dilakukan dalam satu transaksi atomik.
+2. **Choreographed & Orchestrated Saga**: Menjalankan transaksi multi-tahap dengan mekanisme kompensasi otomatis jika salah satu tahapan transaksi mengalami kegagalan.
+
+## Kesimpulan & Rekomendasi
+
+Transisi menuju arsitektur *event-driven* memerlukan disiplin tinggi dalam observabilitas, tracing terdistribusi (OpenTelemetry), dan standardisasi kontrak schema pesan. Bagi institusi enterprise, investasi pada fondasi arsitektur ini memberikan fleksibilitas inovasi produk yang jauh lebih cepat dalam jangka panjang.
