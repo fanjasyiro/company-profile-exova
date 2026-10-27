@@ -3,3 +3,4 @@ export * from './technology';
 export * from './team';
 export * from './testimonial';
 export * from './contact';
+export * from './footer';
