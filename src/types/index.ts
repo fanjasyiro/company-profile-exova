@@ -4,3 +4,4 @@ export * from './team';
 export * from './testimonial';
 export * from './contact';
 export * from './footer';
+export * from './blog';
